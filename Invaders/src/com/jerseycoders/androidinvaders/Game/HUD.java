@@ -61,13 +61,13 @@ public class HUD extends GameSprite {
 		p.setTextSize(26);
 		
 		int lives = gameEngine.getLives();
-		c.drawText(Integer.toString(lives), 3f * convertW, 15f * convertH, p);
+		c.drawText(Integer.toString(lives), 3f , 15f , p);
 
 		int score = gameEngine.getScore();
 		for (int i = 1; i < 9; i++) {
 			int digit = findDigit(score, i);
-			drawDigit(c, digit,	(gameEngine.FRAME_WIDTH/2 + 26*(4-i)) * convertW,
-					3 * convertH, false);
+			drawDigit(c, digit,	(gameEngine.FRAME_WIDTH/2) + (26*(4-i)),
+					3 , false);
 		}
 
 		switch (alienType) {
