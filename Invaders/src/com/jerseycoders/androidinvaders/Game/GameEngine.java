@@ -62,18 +62,12 @@ public class GameEngine {
 	public GameEngine(Context context, Display display) {
 		this.context = context;
 		this.display = display;
-		
 		DisplayMetrics displaymetrics = new DisplayMetrics();
 		((Activity) this.context).getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
 		int screenWidth = displaymetrics.widthPixels;
 		int screenHeight = displaymetrics.heightPixels;
 		convertW = (float) screenWidth / (float) FRAME_WIDTH;
 		convertH = (float) screenHeight / (float) FRAME_HEIGHT;
-		
-		
-		//convertW = (float) display.getWidth() / (float) FRAME_WIDTH;
-		//convertH = (float) display.getHeight() / (float) FRAME_HEIGHT;
-			
 		shotCount = 0;
 		alienShotCount = 0;
 		lives = 1;
@@ -714,9 +708,11 @@ public class GameEngine {
 
 	public void drawGame(Canvas canvas) {
 		Paint p = new Paint();
-
-		Rect r = new Rect(0, 0, getDisplay().getWidth(), getDisplay()
-				.getHeight());
+		DisplayMetrics displaymetrics = new DisplayMetrics();
+		((Activity) this.context).getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+		int screenWidth = displaymetrics.widthPixels;
+		int screenHeight = displaymetrics.heightPixels;
+		Rect r = new Rect(0, 0, screenWidth, screenHeight);
 		canvas.drawBitmap(gameBackground, null, r, p);
 
 		headsUp.setHUD(alienType, numInARow);
