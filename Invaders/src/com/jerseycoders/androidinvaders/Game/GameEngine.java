@@ -8,18 +8,22 @@ import com.jerseycoders.androidinvaders.Planet0.Planet0;
 import com.jerseycoders.androidinvaders.Planet1.Planet1;
 import com.jerseycoders.androidinvaders.Settings.Settings;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.os.Build;
 import android.util.DisplayMetrics;
 import android.view.Display;
 
 
+@TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
 public class GameEngine {
 	private double MAX_ALIEN_SPEED = 7.6;
 	public final int FRAME_WIDTH = 569;
@@ -62,10 +66,17 @@ public class GameEngine {
 	public GameEngine(Context context, Display display) {
 		this.context = context;
 		this.display = display;
-		DisplayMetrics displaymetrics = new DisplayMetrics();
-		((Activity) this.context).getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
-		int screenWidth = displaymetrics.widthPixels;
-		int screenHeight = displaymetrics.heightPixels;
+		//DisplayMetrics displaymetrics = new DisplayMetrics();
+		//((Activity) this.context).getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+		
+		Configuration configuration = ((Activity) this.context).getResources().getConfiguration();
+		//float screenWidth = configuration.screenWidthDp * this.getContext().getResources().getDisplayMetrics().density;
+		//float screenHeight = configuration.screenHeightDp * this.getContext().getResources().getDisplayMetrics().density;
+	
+		//int screenWidth = displaymetrics.widthPixels;
+		//int screenHeight = displaymetrics.heightPixels;
+		int screenWidth = display.getWidth();
+		int screenHeight = display.getHeight();
 		convertW = (float) screenWidth / (float) FRAME_WIDTH;
 		convertH = (float) screenHeight / (float) FRAME_HEIGHT;
 		shotCount = 0;
@@ -405,7 +416,7 @@ public class GameEngine {
 					double moveAmt = MAX_ALIEN_SPEED / Math.pow(baddiesLeft, 1.4);
 					baddie.setMoveAmt(moveAmt);
 					baddie.update();
-					if ((baddie.getX() < 10) || (baddie.getX() > FRAME_WIDTH - 40)) {
+					if ((baddie.getX() < 10) || baddie.getX() > FRAME_WIDTH - 40) {
 						changeDir = true;
 					}
 					if (baddie.getY() > FRAME_HEIGHT*0.85) {

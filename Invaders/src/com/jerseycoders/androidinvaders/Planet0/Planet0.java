@@ -57,6 +57,7 @@ public class Planet0 extends Planet {
 
 	@Override
 	public int getBackgroundRes() {
-		return R.drawable.pluto;
+		return R.drawable.jersey;
+		//return R.drawable.pluto;
 	}
 }
