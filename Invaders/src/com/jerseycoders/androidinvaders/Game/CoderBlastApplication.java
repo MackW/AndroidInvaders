@@ -2,8 +2,8 @@ package com.jerseycoders.androidinvaders.Game;
 
 import android.app.Application;
 
-public class TriageApplication extends Application {
-	private static TriageApplication instance = null;
+public class CoderBlastApplication extends Application {
+	private static CoderBlastApplication instance = null;
 	public static final String PREFS = "AndInvPrefs";
 	
 	public void onCreate() {
@@ -11,7 +11,7 @@ public class TriageApplication extends Application {
 		instance = this;
 	}
 	
-	public static TriageApplication getInstance() {
+	public static CoderBlastApplication getInstance() {
 		return instance;
 	}
 }

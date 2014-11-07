@@ -19,7 +19,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.os.Build;
-import android.util.DisplayMetrics;
+//import android.util.DisplayMetrics;
 import android.view.Display;
 
 
@@ -70,13 +70,13 @@ public class GameEngine {
 		//((Activity) this.context).getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
 		
 		Configuration configuration = ((Activity) this.context).getResources().getConfiguration();
-		//float screenWidth = configuration.screenWidthDp * this.getContext().getResources().getDisplayMetrics().density;
-		//float screenHeight = configuration.screenHeightDp * this.getContext().getResources().getDisplayMetrics().density;
+		float screenWidth = configuration.screenWidthDp * this.getContext().getResources().getDisplayMetrics().density;
+		float screenHeight = configuration.screenHeightDp * this.getContext().getResources().getDisplayMetrics().density;
 	
 		//int screenWidth = displaymetrics.widthPixels;
 		//int screenHeight = displaymetrics.heightPixels;
-		int screenWidth = display.getWidth();
-		int screenHeight = display.getHeight();
+		//int screenWidth = display.getWidth();
+		//int screenHeight = display.getHeight();
 		convertW = (float) screenWidth / (float) FRAME_WIDTH;
 		convertH = (float) screenHeight / (float) FRAME_HEIGHT;
 		shotCount = 0;
@@ -719,11 +719,16 @@ public class GameEngine {
 
 	public void drawGame(Canvas canvas) {
 		Paint p = new Paint();
-		DisplayMetrics displaymetrics = new DisplayMetrics();
-		((Activity) this.context).getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
-		int screenWidth = displaymetrics.widthPixels;
-		int screenHeight = displaymetrics.heightPixels;
-		Rect r = new Rect(0, 0, screenWidth, screenHeight);
+		//DisplayMetrics displaymetrics = new DisplayMetrics();
+		//((Activity) this.context).getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+		//int screenWidth = displaymetrics.widthPixels;
+		//int screenHeight = displaymetrics.heightPixels;
+		Configuration configuration = ((Activity) this.context).getResources().getConfiguration();
+		float screenWidth = configuration.screenWidthDp * this.getContext().getResources().getDisplayMetrics().density;
+		float screenHeight = configuration.screenHeightDp * this.getContext().getResources().getDisplayMetrics().density;		
+		
+		
+		Rect r = new Rect(0, 0, (int) screenWidth, (int) screenHeight+50);
 		canvas.drawBitmap(gameBackground, null, r, p);
 
 		headsUp.setHUD(alienType, numInARow);

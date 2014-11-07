@@ -1,13 +1,13 @@
 package com.jerseycoders.androidinvaders.Settings;
 
-import com.jerseycoders.androidinvaders.Game.TriageApplication;
+import com.jerseycoders.androidinvaders.Game.CoderBlastApplication;
 
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 public class Settings {
 	public static SharedPreferences getSharedPreferences() {
-		TriageApplication app = TriageApplication.getInstance();		
+		CoderBlastApplication app = CoderBlastApplication.getInstance();		
 		return PreferenceManager.getDefaultSharedPreferences(app.getApplicationContext());
 	}
 	

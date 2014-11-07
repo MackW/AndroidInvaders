@@ -31,7 +31,7 @@ public class AndroidInvaders extends Activity implements SensorEventListener {
 	private float prevOrientationValues[] = null;//new float[3];
 	private float prevAccelValues[] = null;//new float[3];
 	long lastJerk = 0;
-	public static final String PREFS = TriageApplication.PREFS;
+	public static final String PREFS = CoderBlastApplication.PREFS;
 	private static AndroidInvaders instance = null;
 	private boolean launchingPauseMenu;
 
